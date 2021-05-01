@@ -5,15 +5,25 @@ import LoginForm from "./components/LoginForm";
 
 function App() {
   const adminUser = {
-    email: "irma@admin.com",
-    password: "admin***"
+    email: "admin@admin.com",
+    password: "admin123"
   };
 
   const [user, setUser] = useState({ name: "", email: "" });
   const [error, setError] = useState("");
 
-  const Login = (details) => {
-    console.log(details);
+  const Login = (info) => {
+    console.log(info);
+
+    if (info.email == adminUser.email && info.password == adminUser.password) {
+      console.log("Just logged in");
+      setUser({
+        name: info.name,
+        email: info.email
+      });
+    } else {
+      console.log("Please verify your information and try again.");
+    }
   };
 
   const Logout = () => {

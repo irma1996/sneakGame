@@ -23,11 +23,15 @@ function App() {
       });
     } else {
       console.log("Please verify your information and try again.");
+      setError("Please verify your information and try again.");
     }
   };
 
   const Logout = () => {
-    console.log("Logout");
+    setUser({
+      name: "",
+      email: ""
+    });
   };
 
   return (
@@ -35,9 +39,10 @@ function App() {
       {user.email != "" ? (
         <div className="welcome">
           <h2>
-            welcome, <span>{user.name}</span>
+            {" "}
+            Welcome, <span>{user.name}</span>
           </h2>
-          <button>Logout</button>
+          <button onClick={Logout}>Logout</button>
         </div>
       ) : (
         <LoginForm Login={Login} error={error} />

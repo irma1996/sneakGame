@@ -36,3 +36,120 @@
     transform: rotate(360deg);
   }
 }
+
+.score {
+  height: 110px;
+  margin: auto;
+  font-size: 30px;
+  /* background-color: yellow; */
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-span {
+  color: #418107;
+  font-size: 37px;
+  font-weight: bold;
+  margin-left: 0.5rem;
+  padding-top: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #4e4e4e;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.game-area {
+  position: absolute;
+  margin-left: 25%;
+  width: 700px;
+  height: 550px;
+  border: 1px solid #fff;
+  display: grid;
+  grid-template-rows: repeat(21, 1fr);
+  grid-template-columns: repeat(21, 1fr);
+  grid-gap: 30px;
+  background-color: #313131;
+}
+
+.snake-dot {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background-color: green;
+  border: 1px solid white;
+  z-index: 2;
+}
+
+/* .snake-food{
+  position: absolute;
+  width: 2‰;
+  height: 2‰;
+   background-color: red; 
+  /* background-image: url("./Images/icons8-apple-48.png"); */
+/* border: 1px solid white;
+  z-index: 1;
+
+}  */
+
+.game-area {
+  position: relative;
+  margin: auto;
+  border: 1px solid #fff;
+  margin-bottom: 8px;
+}
+
+.snake-food {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  /* background-color: red; */
+  /* background-image: url("./Images//icons8-apple-25.png"); */
+  /* padding: 7px;  */
+  background: #418107;
+  border: 1px solid #ffffff;
+  z-index: 1;
+  background-repeat: no-repeat;
+}
+
+.btn {
+  text-align: center;
+}
+
+button {
+  border: none;
+  background-color: green;
+  color: white;
+  padding: 15px 40px;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #313131;
+  transition: 0.5s all;
+}
+
+.clock-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}

@@ -110,6 +110,7 @@ form .form-inner input[type="submit"],
 .welcome {
   background-color: white;
   padding: 15px 30px;
+  border-radius: 0.25rem;
 }
 
 .welcome h2 {

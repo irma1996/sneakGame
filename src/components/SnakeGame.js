@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Snake from "./Snake";
+import Food from "./Food";
 
 const getRandomCoordinates = () => {
   let min = 1;
@@ -9,7 +10,8 @@ const getRandomCoordinates = () => {
   return [x, y];
 };
 
-const SnakeGame = () => {
+const SneakGame = () => {
+  const [food, setFood] = useState(getRandomCoordinates);
   const [speed, setSpeed] = useState(200);
   const [direction, setDirection] = useState("RIGHT");
   const [snakeDots, setSnakeDots] = useState([
@@ -17,7 +19,6 @@ const SnakeGame = () => {
     [2, 0]
   ]);
   const [pause, setPause] = useState(true);
-  const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
 
@@ -25,7 +26,6 @@ const SnakeGame = () => {
     if (pause) return;
     checkIfOutOfBorders();
     checkIfCollapsed();
-    setTimeout(() => moveSnake(snakeDots, checkIfEat()), speed);
   }, [snakeDots, pause]);
 
   useEffect(() => {
@@ -85,6 +85,8 @@ const SnakeGame = () => {
       if (direction) {
         dots.push(head);
 
+        eaten ? setFood(getRandomCoordinates()) : dots.shift();
+
         setSnakeDots([...dots]);
       }
     },
@@ -111,6 +113,8 @@ const SnakeGame = () => {
 
   const checkIfEat = () => {
     let head = snakeDots[snakeDots.length - 1];
+
+    return head[0] === food[0] && head[1] === food[1];
   };
 
   const onGameOver = () => {
@@ -120,41 +124,6 @@ const SnakeGame = () => {
     ]);
     setDirection(null);
     window.location.reload();
-  };
-
-  const start = () => {
-    run();
-    setStatus(1);
-    setInterv(setInterval(run, 10));
-  };
-
-  let updatedMs = time.ms,
-    updatedS = time.s,
-    updatedM = time.m,
-    updatedH = time.h;
-
-  const run = () => {
-    if (updatedM === 60) {
-      updatedH++;
-      updatedM = 0;
-    }
-
-    if (updatedS === 60) {
-      updatedM++;
-      updatedS = 0;
-    }
-
-    if (updatedMs === 100) {
-      updatedS++;
-      updatedMs = 0;
-    }
-    updatedMs++;
-    return setTime({ ms: updatedMs, s: updatedS, m: updatedM, h: updatedH });
-  };
-
-  const stop = () => {
-    clearInterval(interv);
-    setStatus(2);
   };
 
   return (
@@ -167,17 +136,13 @@ const SnakeGame = () => {
 
       <div className="game-area">
         <Snake snakeDots={snakeDots} />
+        <Food dot={food} />
       </div>
 
       <div className="btn">
         <button
           onClick={() => {
             setPause((p) => !p);
-            if (pause) {
-              start();
-            } else {
-              stop();
-            }
           }}
         >
           {pause ? "PLAY" : "PAUSE"}
@@ -187,4 +152,4 @@ const SnakeGame = () => {
   );
 };
 
-export default SnakeGame;
+export default SneakGame;

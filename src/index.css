@@ -16,6 +16,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000000c4;
 }
 
 form {
@@ -95,9 +96,18 @@ form .form-inner input[type="submit"],
   background-color: black;
 }
 
+.play-buttom {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.4s;
+  color: white;
+  margin-top: 12px;
+  background-color: black;
+  text-decoration: none;
+}
+
 .welcome {
-  width: 100%;
-  max-width: 480%;
   background-color: white;
   padding: 15px 30px;
 }

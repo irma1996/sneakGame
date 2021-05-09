@@ -20,7 +20,9 @@ const WelcomeSite = () => {
           <h2>
             Welcome, <span>{user.name}</span>
           </h2>
-          <Link to="game">Play</Link>
+          <Link className="play-buttom" to="game">
+            Play
+          </Link>
         </div>
       ) : (
         <LoginForm Login={Login} />

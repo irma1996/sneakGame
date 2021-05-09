@@ -1,5 +1,4 @@
 * {
-  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -22,6 +21,7 @@ button {
 form {
   display: block;
   position: relative;
+  text-align: left;
 }
 
 form:after {
@@ -40,7 +40,7 @@ form .form-inner {
   position: relative;
   display: block;
   background-color: #fff;
-  padding: 30px;
+  padding: 50px;
   z-index: 2;
 }
 
@@ -60,11 +60,69 @@ form .from-inner .form-group {
 .form-inner .form-group label {
   display: block;
   color: #666;
-  font-size: 12px;
-  margin-bottom: 5px;
+  font-size: 15px;
+  margin-bottom: 3px;
   transition: 0.4s;
+  margin-top: 10px;
 }
 
 .form-inner .form-group:focus-within label {
   color: #fe4880;
+}
+
+form .form-inner .form-group input {
+  display: block;
+  widows: 100%;
+  padding: 10px 15px;
+  background-color: #f8f8ff;
+  border-radius: 8px;
+  transition: 0.4s;
+  width: 100%;
+}
+
+form .form-inner .form-group input :focus {
+  box-shadow: 0px 0 px 3px rgb(0, 0, 0, 0.2);
+}
+
+form .form-inner input[type="submit"],
+.welcome button {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: 0.4s;
+  color: white;
+  margin-top: 12px;
+  background-color: black;
+}
+
+.welcome {
+  width: 100%;
+  max-width: 480%;
+  background-color: white;
+  padding: 15px 30px;
+}
+
+.welcome h2 {
+  color: black;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.welcome h2 span {
+  color: #fe4880;
+  font-weight: 700;
+}
+
+.game-area {
+  position: absolute;
+  margin-left: 25%;
+  width: 700px;
+  height: 550px;
+  border: 1px solid #fff;
+  display: grid;
+  grid-template-rows: repeat(21, 1fr);
+  grid-template-columns: repeat(21, 1fr);
+  grid-gap: 30px;
+  background-color: #313131;
 }

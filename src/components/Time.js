@@ -13,7 +13,7 @@ function Time(props) {
     }
   };
   return (
-    <div>
+    <div className="time-div">
       <span className="time-span">
         {props.time.h >= 10 ? props.time.h : "0" + props.time.h}
       </span>

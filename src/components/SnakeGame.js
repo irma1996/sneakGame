@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Snake from "./Snake";
 import Food from "./Food";
+import Time from "./Time";
+import DisplayTime from "./DisplayTime";
 
 const getRandomCoordinates = () => {
   let min = 1;
@@ -19,6 +21,7 @@ const SneakGame = () => {
     [2, 0]
   ]);
   const [pause, setPause] = useState(true);
+  const [time, setTime] = useState({ ms: 0, s: 0, m: 0, h: 0 });
   const [interv, setInterv] = useState();
   const [status, setStatus] = useState(0);
 
@@ -26,6 +29,7 @@ const SneakGame = () => {
     if (pause) return;
     checkIfOutOfBorders();
     checkIfCollapsed();
+    setTimeout(() => moveSnake(snakeDots, checkIfEat()), speed);
   }, [snakeDots, pause]);
 
   useEffect(() => {
@@ -126,12 +130,53 @@ const SneakGame = () => {
     window.location.reload();
   };
 
+  const start = () => {
+    run();
+    setStatus(1);
+    setInterv(setInterval(run, 10));
+  };
+
+  let updatedMs = time.ms,
+    updatedS = time.s,
+    updatedM = time.m,
+    updatedH = time.h;
+
+  const run = () => {
+    if (updatedM === 60) {
+      updatedH++;
+      updatedM = 0;
+    }
+
+    if (updatedS === 60) {
+      updatedM++;
+      updatedS = 0;
+    }
+
+    if (updatedMs === 100) {
+      updatedS++;
+      updatedMs = 0;
+    }
+    updatedMs++;
+    return setTime({ ms: updatedMs, s: updatedS, m: updatedM, h: updatedH });
+  };
+
+  const stop = () => {
+    clearInterval(interv);
+    setStatus(2);
+  };
+
   return (
     <>
       <div className="score">
         {" "}
         <h3>Score: </h3>
         <span className="score-span"> {snakeDots.length - 2}</span>
+      </div>
+
+      <div className="clock-holder">
+        <div>
+          <Time time={time} />
+        </div>
       </div>
 
       <div className="game-area">
@@ -143,6 +188,11 @@ const SneakGame = () => {
         <button
           onClick={() => {
             setPause((p) => !p);
+            if (pause) {
+              start();
+            } else {
+              stop();
+            }
           }}
         >
           {pause ? "PLAY" : "PAUSE"}

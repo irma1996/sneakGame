@@ -64,6 +64,18 @@ const SneakGame = () => {
     };
   }, [direction, setDirection]);
 
+  useEffect(() => {
+    if (snakeDots.length > 7 && snakeDots.length < 15) {
+      setSpeed(150);
+    } else if (snakeDots.length > 16 && snakeDots.length < 22) {
+      setSpeed(100);
+    } else if (snakeDots.length > 22 && snakeDots.length < 32) {
+      setSpeed(75);
+    } else if (snakeDots.length > 32) {
+      setSpeed(50);
+    }
+  }, [snakeDots]);
+
   const moveSnake = useCallback(
     (snakeDots, eaten) => {
       let dots = [...snakeDots];

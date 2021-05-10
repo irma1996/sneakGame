@@ -137,3 +137,18 @@ form .form-inner input[type="submit"],
   grid-gap: 30px;
   background-color: #313131;
 }
+
+.time-span {
+  padding: 0.3rem;
+  border: 3px solid #fff;
+  margin: 0 0.3rem;
+  border-radius: 0.25rem;
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #313131;
+}
+
+.time-span ~ span {
+  color: #fff;
+}

@@ -34,7 +34,7 @@ form:after {
   right: -5px;
   bottom: -5px;
   z-index: 1;
-  background-image: linear-gradient(to bottom right, #ffce00, #fe4880);
+  background-image: linear-gradient(to bottom right, #ffce00, #418107);
 }
 
 form .form-inner {
@@ -121,7 +121,7 @@ form .form-inner input[type="submit"],
 }
 
 .welcome h2 span {
-  color: #fe4880;
+  color: #418107;
   font-weight: 700;
 }
 

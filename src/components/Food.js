@@ -1,7 +1,6 @@
 import React from "react";
 
 export default (props) => {
-  console.log(props);
   const style = {
     left: `${props.dot[0]}%`,
     top: `${props.dot[1]}%`

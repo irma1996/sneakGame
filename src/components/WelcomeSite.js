@@ -6,8 +6,6 @@ const WelcomeSite = () => {
   const [user, setUser] = useState({ name: "", email: "" });
 
   const Login = (info) => {
-    console.log(info);
-
     setUser({
       name: info.name
     });

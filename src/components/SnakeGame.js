@@ -38,7 +38,6 @@ const SneakGame = () => {
       e = e || window.event;
       switch (e.keyCode) {
         case 38:
-          console.log("direction", direction);
           !["DOWN", "UP"].includes(direction) && setDirection("UP");
           break;
         case 40:
@@ -60,7 +59,6 @@ const SneakGame = () => {
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      console.log("direction return", direction); // useEffect precedente
     };
   }, [direction, setDirection]);
 
